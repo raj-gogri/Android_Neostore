@@ -1,33 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-    <import type="android.view.View"/>
-                <variable
+        <import type="android.view.View"
+            />
+        <import type="com.neosoft.neostore.view.GothamFont" />
+
+        <import type="com.neosoft.neostore.Constans"/>
+
+        <variable
             name="myUser"
-            type="com.neosoft.neostore.model.User"/>
+            type="com.neosoft.neostore.model.LoginUser" />
 
     </data>
-<LinearLayout
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
 
-    <TextView
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_red"
+        android:paddingBottom="20dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp">
+
+        <TextView
+            android:id="@+id/txtLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="49dp"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:text="@string/neoLabel"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            bind:font="@{Constans.GOTHAM_FONT}"
+            />
+
+        <RelativeLayout
+            android:id="@+id/username_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtLabel"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/editext_border">
+
+            <TextView
+                android:id="@+id/user_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                bind:font="@{Constans.AWSOME_FONT}"
+                />
+
+            <EditText
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/user_icon"
+                android:background="@android:color/transparent"
+                android:hint="@string/username_hint"
+               android:layout_centerVertical="true"
+                android:text="@{myUser.userName}"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                bind:font="@{Constans.GOTHAM_FONT}"
+                />
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/password_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{myUser.userName}"
-        android:visibility="@{myUser.userName==null ?View.GONE:View.VISIBLE}"
-        android:id="@+id/txtUserName"
-        />
+        android:layout_below="@+id/username_layout"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/editext_border">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{myUser.password}" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/password_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            bind:font="@{Constans.AWSOME_FONT}"
+            android:padding="10dp"/>
+        <EditText
+            android:id="@+id/txtPassord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password_hint"
+            android:layout_toRightOf="@+id/password_icon"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:text="@{myUser.password}"
+            android:textColorHint="@color/white"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password_layout"
+            android:layout_marginBottom="21dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/btn_Login"
+            android:textColor="@color/background_red"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/txtForgotPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLogin"
+            android:gravity="center"
+            android:text="@string/txt_forgotpass"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/btn_addUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/add_user"
+            android:textColor="@color/white"
+            android:textSize="46sp"
+            bind:font="@{Constans.AWSOME_FONT}"/>
+
+        <TextView
+            android:id="@+id/txt_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/btn_addUser"
+            android:layout_marginTop="13dp"
+            android:text="@string/txt_regiter"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
 </layout>

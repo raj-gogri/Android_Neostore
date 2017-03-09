@@ -4,15 +4,18 @@ package com.neosoft.neostore.model;
  * Created by webwerks1 on 8/3/17.
  */
 
-public class User {
+public class LoginUser {
 
     private  String userName;
     private  String password;
 
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
-    }
+
+
+
+//    public LoginUser(String userName, String password) {
+//        this.userName = userName;
+//        this.password = password;
+//    }
 
     public String getUserName() {
         return userName;
