@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">NeoStore</string>
     <string name="register_title">Register</string>
-    <string name="font_awesome_android_icon">&#xf17b;</string>
+    <string name="username"> &#xf007;</string>
     <string name="font_awesome_area_chart_icon">&#xf1fe;</string>
     <string name="font_awesome_cubes_icon">&#xf1b3;</string>
     <string name="font_awesome_mobile_phone_icon">&#xf10b;</string>
+    <string name="first_name">First Name</string>
+    <string name="last_nmae">Last Name</string>
+    <string name="Email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="checkbox">I agree the Terms and Conditions</string>
 </resources>

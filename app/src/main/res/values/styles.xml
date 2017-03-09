@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Login_Registration">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <item name="android:layout_marginTop">23dp</item>
+    </style>
+
+    <style name="button_selector">
+        
+        <item name="android:background">@drawable/selector</item>
+
+    </style>
 </resources>
