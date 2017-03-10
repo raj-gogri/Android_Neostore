@@ -7,9 +7,11 @@
 
         <import type="android.view.View"
             />
-        <import type="com.neosoft.neostore.view.GothamFont" />
 
-        <import type="com.neosoft.neostore.Constans"/>
+        <variable
+            name="myHandler"
+            type="com.neosoft.neostore.handler.Handler"/>
+        <import type="com.neosoft.neostore.Constants"/>
 
         <variable
             name="myUser"
@@ -39,7 +41,7 @@
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
-            bind:font="@{Constans.GOTHAM_FONT}"
+            bind:font="@{Constants.GOTHAM_FONT}"
             />
 
         <RelativeLayout
@@ -61,7 +63,7 @@
                 android:textColor="@color/white"
                 android:layout_centerVertical="true"
                 android:padding="10dp"
-                bind:font="@{Constans.AWSOME_FONT}"
+                bind:font="@{Constants.AWSOME_FONT}"
                 />
 
             <EditText
@@ -76,7 +78,7 @@
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
                 android:textColor="@color/white"
-                bind:font="@{Constans.GOTHAM_FONT}"
+                bind:font="@{Constants.GOTHAM_FONT}"
                 />
         </RelativeLayout>
 
@@ -98,7 +100,7 @@
             android:textSize="18sp"
             android:textColor="@color/white"
             android:layout_centerVertical="true"
-            bind:font="@{Constans.AWSOME_FONT}"
+            bind:font="@{Constants.AWSOME_FONT}"
             android:padding="10dp"/>
         <EditText
             android:id="@+id/txtPassord"
@@ -106,8 +108,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/password_hint"
             android:layout_toRightOf="@+id/password_icon"
+            android:layout_centerVertical="true"
             android:background="@android:color/transparent"
-            android:padding="10dp"
             android:text="@{myUser.password}"
             android:textColorHint="@color/white"
             android:textSize="18sp"
@@ -125,7 +127,9 @@
             android:layout_marginRight="30dp"
             android:text="@string/btn_Login"
             android:textColor="@color/background_red"
-            android:textSize="26sp" />
+            android:textSize="26sp"
+            android:onClick="@{myHandler::onClick}"
+            />
 
         <TextView
             android:id="@+id/txtForgotPass"
@@ -148,7 +152,7 @@
             android:text="@string/add_user"
             android:textColor="@color/white"
             android:textSize="46sp"
-            bind:font="@{Constans.AWSOME_FONT}"/>
+            bind:font="@{Constants.AWSOME_FONT}"/>
 
         <TextView
             android:id="@+id/txt_register"

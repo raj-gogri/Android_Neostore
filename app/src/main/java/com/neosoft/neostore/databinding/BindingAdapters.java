@@ -5,9 +5,7 @@ import android.graphics.Typeface;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.neosoft.neostore.view.GothamFont;
 
-import org.w3c.dom.Text;
 
 /**
  * Created by webwerks1 on 9/3/17.
