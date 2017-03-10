@@ -1,10 +1,14 @@
 package com.neosoft.neostore.Model;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+
 /**
  * Created by webwerks on 9/3/17.
  */
 
-public class Register {
+public class Register extends BaseObservable{
 
 	private String firstName;
 	private String lastName;;
@@ -12,7 +16,7 @@ public class Register {
 	private String password;
 	private String confirmPassword;
 	private String phoneNumber;
-	private String radioGroup;
+	//private String gender;
 
 
 
@@ -27,12 +31,17 @@ public class Register {
 //
 //	}
 
+
+
+
 	public String getFirstName() {
 		return this.firstName;
 	}
 
 	public void setFirstName( String firstName ) {
 		this.firstName = firstName;
+
+
 	}
 
 	public String getLastName() {
@@ -76,11 +85,12 @@ public class Register {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getRadioGroup() {
-		return this.radioGroup;
-	}
 
-	public void setRadioGroup( String radioGroup ) {
-		this.radioGroup = radioGroup;
-	}
+//	public String getGender() {
+//		return this.gender;
+//	}
+//
+//	public void setGender( String gender ) {
+//		this.gender = gender;
+//	}
 }

@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">NeoStore</string>
     <string name="register_title">Register</string>
-    <string name="username"> &#xf007;</string>
-    <string name="font_awesome_area_chart_icon">&#xf1fe;</string>
-    <string name="font_awesome_cubes_icon">&#xf1b3;</string>
-    <string name="font_awesome_mobile_phone_icon">&#xf10b;</string>
+    <string name="username">&#xf007;</string>
+    <string name="emailId"> &#xf0e0;</string>
+    <string name="password1">&#xf023;</string>
+    <string name="phone">&#xf10b;</string>
+
+
     <string name="first_name">First Name</string>
     <string name="last_nmae">Last Name</string>
     <string name="Email">Email</string>
