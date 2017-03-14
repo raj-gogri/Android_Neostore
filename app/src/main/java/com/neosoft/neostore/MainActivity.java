@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.neosoft.neostore.API.ApiClient;
 import com.neosoft.neostore.Interface.ServiceInterface;
@@ -30,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
 	private String first,last,emailId,pass,confirmPass,num,radio1;
 	private ActivityMainBinding binding;
-	private RadioButton radioButton;
+	private RadioButton radioButton,male,female;
 	private RadioGroup radioGroup;
 	int selectID;
+	String selection;
 	private static final String POST_REGISTER_URL = "http://staging.php-dev.in:8844/trainingapp/";
 
 	@Override
@@ -40,15 +42,54 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate( savedInstanceState );
 		//setContentView( R.layout.activity_main );
 
-//		radioGroup = (RadioGroup ) findViewById( R.id.radio );
-//		selectID = radioGroup.getCheckedRadioButtonId();
-//		radioButton = (RadioButton ) findViewById( selectID );
+//		radioGroup = (RadioGroup) findViewById( R.id.radio );
+//
+//		male = (RadioButton ) findViewById( R.id.radioButtonMale );
+//
+//		female = (RadioButton ) findViewById( R.id.radioButtonFemale );
+//
+//		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//
+//			@Override
+//			public void onCheckedChanged(RadioGroup group, int checkedId) {
+//				// find which radio button is selected
+//				if(checkedId == R.id.radioButtonMale) {
+//
+//				    selection = "M";
+//
+//				} else if(checkedId == R.id.radioButtonFemale) {
+//
+//					selection = "F";
+//				}
+//			}
+//
+//		});
 
 
 		binding = DataBindingUtil.setContentView( this,R.layout.activity_main );
 
 		binding.setRegister( new Register() );
 
+		binding.BtnRegister.setOnClickListener( new View.OnClickListener() {
+			@Override
+			public void onClick( View v ) {
+
+				first = binding.editTextFirstName.getText().toString();
+				last = binding.editTextLastName.getText().toString();
+				emailId = binding.editTextEmail.getText().toString();
+				pass = binding.editTextPassword.getText().toString();
+				confirmPass = binding.editTextConfirmPassword.getText().toString();
+//				radio1 = radioGroup.toString();
+				num = binding.editTextPhone.getText().toString();
+
+
+				userPost();
+
+				clearText();
+
+
+			}
+		} );
 
 
 
@@ -60,35 +101,6 @@ public class MainActivity extends AppCompatActivity {
 //			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
-	public void onSaveClick( View v){
-
-
-		switch ( v.getId() ){
-
-			case R.id.BtnRegister:
-
-				Log.d("onClick","button pressed");
-
-//				first = binding.editTextFirstName.getText().toString();
-//				last = binding.editTextLastName.getText().toString();
-//				emailId = binding.editTextEmail.getText().toString();
-//				pass = binding.editTextPassword.getText().toString();
-//				confirmPass = binding.editTextConfirmPassword.getText().toString();
-//				num = binding.editTextPhone.getText().toString();
-//				//radio1 = radioButton.getText().toString();
-//
-//				userPost();
-//
-//				clearText();
-
-
-				break;
-
-		}
-
-
-
-	}
 
 	private void clearText() {
 
@@ -105,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 		ServiceInterface serviceInterface = ApiClient.getObservableClient( POST_REGISTER_URL ).create( ServiceInterface.class );
 
 
-		Observable< Register > observable = serviceInterface.postUserDetails( first, last, emailId, pass, confirmPass, num );
+		Observable< Register > observable = serviceInterface.postUserDetails( first, last, emailId, pass, confirmPass ,num );
 
 		observable.subscribeOn( Schedulers.newThread() )
 
