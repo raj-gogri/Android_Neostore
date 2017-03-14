@@ -2,6 +2,9 @@ package com.neosoft.neostore.Model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.text.TextUtils;
+
+import com.neosoft.neostore.Responses.ResponseData;
 
 
 /**
@@ -16,7 +19,8 @@ public class Register extends BaseObservable{
 	private String password;
 	private String confirmPassword;
 	private String phoneNumber;
-	//private String gender;
+	private boolean gender;
+	ResponseData responseData;
 
 
 
@@ -85,12 +89,27 @@ public class Register extends BaseObservable{
 		this.phoneNumber = phoneNumber;
 	}
 
+	public boolean isGender() {
+		return this.gender;
+	}
 
-//	public String getGender() {
-//		return this.gender;
-//	}
-//
-//	public void setGender( String gender ) {
-//		this.gender = gender;
-//	}
+	public void setGender( boolean gender ) {
+		this.gender = gender;
+	}
+
+	public ResponseData getResponseData() {
+		return this.responseData;
+	}
+
+	public void setResponseData( ResponseData responseData ) {
+		this.responseData = responseData;
+	}
+
+	public boolean isValid(){
+
+		return !TextUtils.isEmpty( firstName ) && !TextUtils.isEmpty( lastName ) && !TextUtils.isEmpty( email ) && !TextUtils.isEmpty( password ) && !TextUtils.isEmpty( confirmPassword ) && !TextUtils.isEmpty(phoneNumber);
+
+
+
+	}
 }

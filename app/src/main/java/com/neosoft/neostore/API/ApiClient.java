@@ -37,6 +37,9 @@ public class ApiClient {
 
 			OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 			httpClient.addInterceptor( httpLoggingInterceptor );
+			httpClient.connectTimeout(30,TimeUnit.SECONDS );
+			httpClient.readTimeout( 30,TimeUnit.SECONDS );
+			httpClient.writeTimeout( 30,TimeUnit.SECONDS );
 
 
 			retrofit = new Retrofit.Builder()
@@ -66,9 +69,9 @@ public class ApiClient {
 
 			OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 			httpClient.addInterceptor( httpLoggingInterceptor );
-			httpClient.connectTimeout(20,TimeUnit.SECONDS );
-			httpClient.readTimeout( 20,TimeUnit.SECONDS );
-			httpClient.writeTimeout( 20,TimeUnit.SECONDS );
+			httpClient.connectTimeout(30,TimeUnit.SECONDS );
+			httpClient.readTimeout( 30,TimeUnit.SECONDS );
+			httpClient.writeTimeout( 30,TimeUnit.SECONDS );
 
 
 			ObservableRetrofit = new Retrofit.Builder()

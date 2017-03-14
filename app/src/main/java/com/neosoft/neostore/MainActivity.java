@@ -21,6 +21,9 @@ import com.neosoft.neostore.databinding.ActivityMainBinding;
 
 import org.stringtemplate.v4.ST;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 	private RadioGroup radioGroup;
 	int selectID;
 	String selection;
+	Register register1 = new Register();
 	private static final String POST_REGISTER_URL = "http://staging.php-dev.in:8844/trainingapp/";
 
 	@Override
@@ -79,13 +83,30 @@ public class MainActivity extends AppCompatActivity {
 				emailId = binding.editTextEmail.getText().toString();
 				pass = binding.editTextPassword.getText().toString();
 				confirmPass = binding.editTextConfirmPassword.getText().toString();
-//				radio1 = radioGroup.toString();
+				radio1 = binding.radio.toString();
 				num = binding.editTextPhone.getText().toString();
 
+				int selectedId = binding.radio.getCheckedRadioButtonId();
 
-				userPost();
+				radioButton = (RadioButton) findViewById(selectedId);
 
-				clearText();
+				radio1 = radioButton.getText().toString();
+
+
+				if(binding.getRegister().isValid()){
+
+
+					userPost();
+
+					clearText();
+
+
+
+				}else {
+
+
+					Toast.makeText(getApplicationContext(),"Please fill all the values",Toast.LENGTH_LONG).show();
+				}
 
 
 			}
@@ -110,67 +131,73 @@ public class MainActivity extends AppCompatActivity {
 		binding.editTextPassword.setText( "" );
 		binding.editTextConfirmPassword.setText( "" );
 		binding.editTextPhone.setText( "" );
+		binding.checkBoxConditions.setChecked( false );
 	}
 
 	private void userPost( ) {
 
-		ServiceInterface serviceInterface = ApiClient.getObservableClient( POST_REGISTER_URL ).create( ServiceInterface.class );
 
+		//TODO code for RX Android
 
-		Observable< Register > observable = serviceInterface.postUserDetails( first, last, emailId, pass, confirmPass ,num );
-
-		observable.subscribeOn( Schedulers.newThread() )
-
-				.observeOn( AndroidSchedulers.mainThread() )
-
-
-				.subscribe( new Subscriber< Register >() {
-					@Override
-					public void onCompleted() {
-
-
-					}
-
-					@Override
-					public void onError( Throwable e ) {
-
-						Log.e( "Failure", e.getMessage() );
-
-
-					}
-
-					@Override
-					public void onNext( Register register ) {
-
-						Log.d( "SUCCESS", register.toString());
-
-
-					}
-
-				} );
-
-
-
-
-//		UserService userService = ApiClient.getClient( POST_URL ).create( UserService.class );
+//		ServiceInterface serviceInterface = ApiClient.getObservableClient( POST_REGISTER_URL ).create( ServiceInterface.class );
 //
 //
-//		Call<Users> call =  userService.post(users.getFirstName(),users.getLastName(),users.getUserEmail(),users.getUserPassword(),users.getConfirmPassword(),users.getUserGender(),users.getUserNumber() );
+//		Observable< Register > observable = serviceInterface.postUserDetails( first, last, emailId, pass, confirmPass,radio1 ,num );
 //
-//		call.enqueue( new Callback< Users >() {
-//			@Override
-//			public void onResponse( Call< Users > call, Response< Users > response ) {
+//		observable.subscribeOn( Schedulers.newThread() )
 //
-//				Log.d("success",response.message());
+//				.observeOn( AndroidSchedulers.mainThread() )
 //
-//			}
 //
-//			@Override
-//			public void onFailure( Call< Users > call, Throwable t ) {
+//				.subscribe( new Subscriber< Register >() {
+//					@Override
+//					public void onCompleted() {
 //
-//				Log.e("Failed",t.toString() );
 //
-//			}
-//		} );
+//					}
+//
+//					@Override
+//					public void onError( Throwable e ) {
+//
+//						Log.e( "Failure", e.getMessage() );
+//
+//
+//					}
+//
+//					@Override
+//					public void onNext( Register register ) {
+//
+//						Log.d( "SUCCESS", register.toString());
+//
+//
+//
+//					}
+//
+//				} );
+
+
+		// TODO code for retrofit
+
+
+		ServiceInterface userService = ApiClient.getClient( POST_REGISTER_URL ).create( ServiceInterface.class );
+
+
+		Call<Register> call =  userService.postUserDetails(first, last, emailId, pass, confirmPass,radio1 ,num  );
+
+		call.enqueue( new Callback< Register >() {
+			@Override
+			public void onResponse( Call< Register > call, Response< Register > response ) {
+
+				Log.d("success",response.message());
+
+			}
+
+			@Override
+			public void onFailure( Call< Register > call, Throwable t ) {
+
+				Log.e("Failed",t.toString() );
+
+			}
+		} );
 	}
 }
