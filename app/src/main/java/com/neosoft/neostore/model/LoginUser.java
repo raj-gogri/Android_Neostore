@@ -15,6 +15,15 @@ public class LoginUser  extends BaseObservable {
     private  String userName;
     private  String password;
 
+        public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private  String status;
 
 
 

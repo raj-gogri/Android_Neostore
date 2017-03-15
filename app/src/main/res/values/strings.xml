@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Neostore</string>
     <string name="neoLabel">NeoSTORE</string>
-    <string name="username_hint">Username</string>
+    <string name="username_hint">Email Id</string>
     <string name="password_hint">Password</string>
     <string name="btn_Login">LOGIN</string>
+    <string name="btn_submit_forgotpass">SUBMIT</string>
     <string name="txt_forgotpass">Forgot Password?</string>
     <string name="txt_regiter">Don\'t have an account?</string>
     <string name="add_user">&#xf055;</string>
