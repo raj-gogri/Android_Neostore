@@ -20,6 +20,9 @@ public class ApiClient {
 
 	//public static final String FETCH_URL = "http://staging.php-dev.in:8844/trainingapp/";
 
+
+	//TODO code for API using retrofit
+
 	private static Retrofit retrofit = null;
 
 	private static Retrofit ObservableRetrofit = null;
@@ -31,9 +34,6 @@ public class ApiClient {
 			HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
 			httpLoggingInterceptor.setLevel( HttpLoggingInterceptor.Level.BODY );
 
-//			OkHttpClient client = new OkHttpClient.Builder()
-//					.addNetworkInterceptor(new StethoInterceptor())
-//					.build();
 
 			OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 			httpClient.addInterceptor( httpLoggingInterceptor );
@@ -55,6 +55,9 @@ public class ApiClient {
 
 	}
 
+
+	//TODO code for API using RX Android
+
 	public static Retrofit getObservableClient(String url1) {
 
 		if ( ObservableRetrofit == null ) {
@@ -62,10 +65,6 @@ public class ApiClient {
 
 			HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
 			httpLoggingInterceptor.setLevel( HttpLoggingInterceptor.Level.BODY );
-
-//			OkHttpClient client = new OkHttpClient.Builder()
-//					.addNetworkInterceptor(new StethoInterceptor())
-//					.build();
 
 			OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 			httpClient.addInterceptor( httpLoggingInterceptor );

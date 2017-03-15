@@ -5,8 +5,6 @@
     <string name="emailId"> &#xf0e0;</string>
     <string name="password1">&#xf023;</string>
     <string name="phone">&#xf10b;</string>
-
-
     <string name="first_name">First Name</string>
     <string name="last_nmae">Last Name</string>
     <string name="Email">Email</string>
@@ -17,4 +15,9 @@
     <string name="radio_female">Female</string>
     <string name="phone_number">Phone Number</string>
     <string name="checkbox">I agree the Terms and Conditions</string>
+    <string name="REGISTER_POST"> http://staging.php-dev.in:8844/trainingapp/</string>
+    <string name="title_activity_demo">Demo</string>
+    <integer name="slide_animation_duration">300</integer>
+
+
 </resources>

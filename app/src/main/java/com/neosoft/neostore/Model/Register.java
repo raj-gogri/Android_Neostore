@@ -4,11 +4,12 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.text.TextUtils;
 
+import com.neosoft.neostore.BR;
 import com.neosoft.neostore.Responses.ResponseData;
 
 
 /**
- * Created by webwerks on 9/3/17.
+ * Created by Nidhi on 9/3/17.
  */
 
 public class Register extends BaseObservable{
@@ -19,90 +20,94 @@ public class Register extends BaseObservable{
 	private String password;
 	private String confirmPassword;
 	private String phoneNumber;
-	private boolean gender;
-	ResponseData responseData;
+	private String gender;
+	ResponseData data;
 
 
 
-//	Register(String name1,String name2,String emailNew, String passwordNew, String confirmPass){
-//
-//		this.firstName = name1;
-//		this.lastName = name2;
-//		this.email = emailNew;
-//		this.password = passwordNew;
-//		this.confirmPassword= confirmPass;
-//
-//
-//	}
-
-
-
-
+     @Bindable
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
 
 	public void setFirstName( String firstName ) {
 		this.firstName = firstName;
+		notifyPropertyChanged( BR.firstName );
+
 
 
 	}
 
+	@Bindable
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
 	}
 
 	public void setLastName( String lastName ) {
 		this.lastName = lastName;
+		notifyPropertyChanged( BR.lastName );
+
+
 	}
 
+	@Bindable
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
 	public void setEmail( String email ) {
 		this.email = email;
+		notifyPropertyChanged( BR.email );
+
 	}
 
+	@Bindable
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword( String password ) {
 		this.password = password;
+		notifyPropertyChanged( BR.password );
 	}
 
+	@Bindable
 	public String getConfirmPassword() {
-		return this.confirmPassword;
+		return confirmPassword;
 	}
 
 	public void setConfirmPassword( String confirmPassword ) {
 		this.confirmPassword = confirmPassword;
+		notifyPropertyChanged( BR.confirmPassword );
 	}
 
 
+	@Bindable
 	public String getPhoneNumber() {
-		return this.phoneNumber;
+		return phoneNumber;
 	}
 
 	public void setPhoneNumber( String phoneNumber ) {
 		this.phoneNumber = phoneNumber;
+		notifyPropertyChanged( BR.phoneNumber );
 	}
 
-	public boolean isGender() {
+	@Bindable
+	public String getGender() {
 		return this.gender;
 	}
 
-	public void setGender( boolean gender ) {
+	public void setGender( String gender ) {
 		this.gender = gender;
+		notifyPropertyChanged( BR.gender );
 	}
 
-	public ResponseData getResponseData() {
-		return this.responseData;
+	public ResponseData getData() {
+		return this.data;
 	}
 
-	public void setResponseData( ResponseData responseData ) {
-		this.responseData = responseData;
+	public void setData( ResponseData data ) {
+		this.data = data;
 	}
 
 	public boolean isValid(){

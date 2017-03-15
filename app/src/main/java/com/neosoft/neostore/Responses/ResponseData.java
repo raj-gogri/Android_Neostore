@@ -1,15 +1,20 @@
 package com.neosoft.neostore.Responses;
 
+import com.neosoft.neostore.Model.Register;
+
 /**
- * Created by webwerks on 14/3/17.
+ * Created by Nidhi on 14/3/17.
  */
 
 public class ResponseData {
 
 	private String message;
 	private String user_msg;
-	UserRegister data;
-	RegisterData registerData;
+	private int status;
+
+
+
+
 
 	public String getMessage() {
 		return this.message;
@@ -27,19 +32,14 @@ public class ResponseData {
 		this.user_msg = user_msg;
 	}
 
-	public UserRegister getData() {
-		return this.data;
+	public int getStatus() {
+		return this.status;
 	}
 
-	public void setData( UserRegister data ) {
-		this.data = data;
+	public void setStatus( int status ) {
+		this.status = status;
 	}
 
-	public RegisterData getRegisterData() {
-		return this.registerData;
-	}
 
-	public void setRegisterData( RegisterData registerData ) {
-		this.registerData = registerData;
-	}
+
 }

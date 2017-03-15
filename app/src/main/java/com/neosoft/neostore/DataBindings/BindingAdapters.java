@@ -6,7 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Created by webwerks on 10/3/17.
+ * Created by Nidhi on 10/3/17.
  */
 
 public class BindingAdapters {

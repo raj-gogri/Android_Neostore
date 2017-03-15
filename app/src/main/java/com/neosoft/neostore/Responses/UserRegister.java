@@ -1,7 +1,7 @@
 package com.neosoft.neostore.Responses;
 
 /**
- * Created by webwerks on 14/3/17.
+ * Created by Nidhi on 14/3/17.
  */
 
 public class UserRegister  {

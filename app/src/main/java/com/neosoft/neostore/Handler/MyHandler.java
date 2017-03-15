@@ -1,35 +1,41 @@
 package com.neosoft.neostore.Handler;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
-import com.neosoft.neostore.Callback.EventCallback;
-import com.neosoft.neostore.Model.Register;
+import com.neosoft.neostore.Activities.Demo;
+import com.neosoft.neostore.Activities.MainActivity;
+import com.neosoft.neostore.R;
 
 /**
- * Created by webwerks on 10/3/17.
+ * Created by Nidhi on 15/3/17.
  */
 
 public class MyHandler {
 
-
-	private EventCallback eventCallback;
-
-	public MyHandler(EventCallback eventCallBack){
-
-		this.eventCallback=eventCallBack;
-	}
-
-	public void onUserRegister( View v, Register register){
+	public void onNavigateButton( View view,Activity activity){
 
 
-
-
-
-
+		Intent i = new Intent( view.getContext(), Demo.class );
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		view.getContext().startActivity( i );
+		transitionAnimation(activity);
 
 
 
 
 	}
+
+	public void transitionAnimation( Activity context){
+
+		context.overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left);
+
+	}
+
+
+
+
 
 }
