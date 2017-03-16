@@ -18,6 +18,7 @@
     <string name="REGISTER_POST"> http://staging.php-dev.in:8844/trainingapp/</string>
     <string name="title_activity_demo">Demo</string>
     <integer name="slide_animation_duration">300</integer>
+    <string name="email_pattern">[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+</string>
 
 
 </resources>

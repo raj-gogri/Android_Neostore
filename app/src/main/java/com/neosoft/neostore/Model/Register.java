@@ -131,7 +131,9 @@ public class Register extends BaseObservable{
 
 	public boolean isValid(){
 
-		return !TextUtils.isEmpty( firstName ) && !TextUtils.isEmpty( lastName ) && !TextUtils.isEmpty( email ) && !TextUtils.isEmpty( password ) && !TextUtils.isEmpty( confirmPassword ) && !TextUtils.isEmpty(phoneNumber);
+		//String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+		return !TextUtils.isEmpty( firstName ) && !TextUtils.isEmpty( lastName ) && !TextUtils.isEmpty( email ) && !TextUtils.isEmpty( password ) && !TextUtils.isEmpty( confirmPassword ) && !TextUtils.isEmpty(phoneNumber) ;
 
 
 

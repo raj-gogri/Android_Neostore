@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
 				radio1 = binding.getRegister().getGender();
 				num = binding.getRegister().getPhoneNumber();
 
+
+
 				int selectedId = binding.radio.getCheckedRadioButtonId();
 
 				radioButton = (RadioButton) findViewById(selectedId);
@@ -85,10 +87,22 @@ public class MainActivity extends AppCompatActivity {
 
 					if(binding.checkBoxConditions.isChecked()){
 
+						if(binding.getRegister().getEmail().matches( getResources().getString( R.string.email_pattern ) )){
 
-					userPost();
 
-					clearText();
+							userPost();
+
+
+
+
+
+						}else {
+
+							Toast.makeText(getApplicationContext(),"Please enter a valid Email Id",Toast.LENGTH_LONG).show();
+
+
+						}
+
 
 					}else {
 
@@ -190,15 +204,11 @@ public class MainActivity extends AppCompatActivity {
 
 					Register registerNew = response.body();
 
-					Log.d("status",registerNew.getStatus());
-
-					Log.d("user_msg",registerNew.getUser_msg());
-
-					Log.d("msg",registerNew.getMessage());
-
 					Log.d( "success", response.message() );
 
-					Toast.makeText( getApplicationContext(),"Registered successfully",Toast.LENGTH_SHORT ).show();
+					Toast.makeText( getApplicationContext(),registerNew.getMessage(),Toast.LENGTH_SHORT ).show();
+
+					clearText();
 
 				}else {
 
@@ -217,4 +227,5 @@ public class MainActivity extends AppCompatActivity {
 			}
 		} );
 	}
+
 }
