@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.neosoft.neostore.R;
@@ -37,13 +38,19 @@ public class Handler {
     private String forgotPassUserId = "";
 
     public void onLoginClick(final View view, LoginUser user) {
+
+        InputMethodManager inputManager = (InputMethodManager)
+                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
         userId = user.getUserName();
         userPassword = user.getPassword();
 
-        if (TextUtils.isEmpty(userId)) {
-            Toast.makeText(view.getContext(), "enter id", Toast.LENGTH_SHORT).show();
+        if (!user.isValid()) {
+            Toast.makeText(view.getContext(), "Enter valid Email id", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userPassword)) {
-            Toast.makeText(view.getContext(), "enter pass", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), "Enter password", Toast.LENGTH_SHORT).show();
         } else {
             UserService apiService =
                     ApiClient.getClient(SERVER_URL).create(UserService.class);
@@ -82,6 +89,12 @@ public class Handler {
     }
 
     public void onSubmitClick(final View view, ForgotPasswordPOJO forgotPasswordPOJO) {
+
+        InputMethodManager inputManager = (InputMethodManager)
+                view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
 
         forgotPassUserId = forgotPasswordPOJO.getUserId();
         if (forgotPasswordPOJO.isValid()) {
