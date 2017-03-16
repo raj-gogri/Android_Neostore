@@ -3,6 +3,7 @@ package com.neosoft.neostore.model;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.renderscript.BaseObj;
+import android.text.TextUtils;
 
 import com.neosoft.neostore.BR;
 
@@ -22,5 +23,11 @@ public class ForgotPasswordPOJO extends BaseObservable{
     public void setUserId(String userId) {
         this.userId = userId;
         notifyPropertyChanged(BR.userId);
+    }
+
+    public boolean isValid()
+    {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        return !TextUtils.isEmpty(userId) && userId.matches(emailPattern) ;
     }
 }

@@ -1,5 +1,6 @@
 package com.neosoft.neostore.activities;
 
+import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.neosoft.neostore.R;
 import com.neosoft.neostore.databinding.ActivityForgotPasswordBinding;
 import com.neosoft.neostore.handler.Handler;
+import com.neosoft.neostore.model.ForgotPasswordPOJO;
 
 
 /**
@@ -22,6 +24,7 @@ public class ForgotPassword extends AppCompatActivity {
 
         ActivityForgotPasswordBinding binding=DataBindingUtil.setContentView(this, R.layout.activity_forgot_password);
         binding.setMyHandler(new Handler());
+        binding.setForgotPass(new ForgotPasswordPOJO());
 
     }
 }

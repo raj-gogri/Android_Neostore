@@ -43,6 +43,11 @@ public interface UserService {
 
     );
 
+    @FormUrlEncoded
+    @POST("api/users/forgot")
+    Call<LoginUser> postForgotPass(
+            @Field("email") String email
 
+    );
 
 }

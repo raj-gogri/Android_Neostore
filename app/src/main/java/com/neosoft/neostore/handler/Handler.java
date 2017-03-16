@@ -1,16 +1,21 @@
 package com.neosoft.neostore.handler;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.neosoft.neostore.R;
 import com.neosoft.neostore.activities.ForgotPassword;
+import com.neosoft.neostore.activities.MainActivity;
 import com.neosoft.neostore.api.ApiClient;
 import com.neosoft.neostore.api.UserService;
 import com.neosoft.neostore.helper.BaseActivity;
+import com.neosoft.neostore.model.ForgotPasswordPOJO;
 import com.neosoft.neostore.model.LoginUser;
 
 import retrofit2.Call;
@@ -21,56 +26,48 @@ import retrofit2.Response;
  * Created by webwerks1 on 10/3/17.
  */
 
-public class Handler  {
+public class Handler {
 
 
-    private String userId="";
-    private String userPassword="";
+    private static final String SERVER_URL = "http://staging.php-dev.in:8844/trainingapp/";
 
 
-    private static final String SERVER_URL="http://staging.php-dev.in:8844/trainingapp/";
-    public void onLoginClick(final View view, LoginUser user)
-    {
-        userId=user.getUserName();
-        userPassword=user.getPassword();
+    private String userId = "";
+    private String userPassword = "";
+    private String forgotPassUserId = "";
 
-      if(TextUtils.isEmpty(userId) )
-      {
-          Toast.makeText(view.getContext(),"enter id",Toast.LENGTH_SHORT).show();
-      }
+    public void onLoginClick(final View view, LoginUser user) {
+        userId = user.getUserName();
+        userPassword = user.getPassword();
 
-        else if(TextUtils.isEmpty(userPassword))
-      {
-          Toast.makeText(view.getContext(),"enter pass",Toast.LENGTH_SHORT).show();
-      }
-        else
-      {
-          UserService apiService =
-                  ApiClient.getClient(SERVER_URL).create(UserService.class);
-          Call<LoginUser> call = apiService.postLogin( userId,userPassword );
-          call.enqueue(new Callback<LoginUser>() {
-              @Override
-              public void onResponse(Call<LoginUser> call, Response<LoginUser> response) {
-                  LoginUser loginResponse= response.body();
+        if (TextUtils.isEmpty(userId)) {
+            Toast.makeText(view.getContext(), "enter id", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(userPassword)) {
+            Toast.makeText(view.getContext(), "enter pass", Toast.LENGTH_SHORT).show();
+        } else {
+            UserService apiService =
+                    ApiClient.getClient(SERVER_URL).create(UserService.class);
+            Call<LoginUser> call = apiService.postLogin(userId, userPassword);
+            call.enqueue(new Callback<LoginUser>() {
+                @Override
+                public void onResponse(Call<LoginUser> call, Response<LoginUser> response) {
+                    LoginUser loginResponse = response.body();
 
 
-                  if(response.isSuccessful())
-                  {
-                      Toast.makeText(view.getContext(),"User login is successful",Toast.LENGTH_SHORT).show();
-                  }
-                  else
-                  {
-                      Toast.makeText(view.getContext(),"User login is unsuccessful",Toast.LENGTH_SHORT).show();
-                  }
-              }
+                    if (response.isSuccessful()) {
+                        Toast.makeText(view.getContext(), "User login is successful", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(view.getContext(), "User login is unsuccessful", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-              @Override
-              public void onFailure(Call<LoginUser> call, Throwable t) {
-                  // Log error here since request failed
-                  Log.d("",t.toString());
-              }
-          });
-      }
+                @Override
+                public void onFailure(Call<LoginUser> call, Throwable t) {
+                    // Log error here since request failed
+                    Log.d("", t.toString());
+                }
+            });
+        }
     }
 
 
@@ -84,4 +81,49 @@ public class Handler  {
 
     }
 
+    public void onSubmitClick(final View view, ForgotPasswordPOJO forgotPasswordPOJO) {
+
+        forgotPassUserId = forgotPasswordPOJO.getUserId();
+        if (forgotPasswordPOJO.isValid()) {
+
+            UserService apiService =
+                    ApiClient.getClient(SERVER_URL).create(UserService.class);
+            Call<LoginUser> call = apiService.postForgotPass(forgotPassUserId);
+            call.enqueue(new Callback<LoginUser>() {
+                @Override
+                public void onResponse(Call<LoginUser> call, Response<LoginUser> response) {
+                    LoginUser loginResponse = response.body();
+
+
+                    if (response.isSuccessful()) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setMessage("New password sent successfully");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                view.getContext().startActivity(intent);
+                            }
+                        });
+
+                        // Create the AlertDialog object and return it
+                        builder.create();
+                        builder.show();
+                    } else {
+                        Toast.makeText(view.getContext(), "Email Id does not exist.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginUser> call, Throwable t) {
+                    // Log error here since request failed
+                    Log.d("", t.toString());
+                }
+            });
+
+        }else
+        {
+            Toast.makeText(view.getContext(), "Please enter valid Email Id ", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
