@@ -188,6 +188,14 @@ public class MainActivity extends AppCompatActivity {
 
 				if(response.isSuccessful()) {
 
+					Register registerNew = response.body();
+
+					Log.d("status",registerNew.getStatus());
+
+					Log.d("user_msg",registerNew.getUser_msg());
+
+					Log.d("msg",registerNew.getMessage());
+
 					Log.d( "success", response.message() );
 
 					Toast.makeText( getApplicationContext(),"Registered successfully",Toast.LENGTH_SHORT ).show();

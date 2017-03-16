@@ -21,7 +21,10 @@ public class Register extends BaseObservable{
 	private String confirmPassword;
 	private String phoneNumber;
 	private String gender;
-	ResponseData data;
+	private String status;
+	private String user_msg;
+	private String message;
+
 
 
 
@@ -102,12 +105,28 @@ public class Register extends BaseObservable{
 		notifyPropertyChanged( BR.gender );
 	}
 
-	public ResponseData getData() {
-		return this.data;
+	public String getStatus() {
+		return this.status;
 	}
 
-	public void setData( ResponseData data ) {
-		this.data = data;
+	public void setStatus( String status ) {
+		this.status = status;
+	}
+
+	public String getUser_msg() {
+		return this.user_msg;
+	}
+
+	public void setUser_msg( String user_msg ) {
+		this.user_msg = user_msg;
+	}
+
+	public String getMessage() {
+		return this.message;
+	}
+
+	public void setMessage( String message ) {
+		this.message = message;
 	}
 
 	public boolean isValid(){
