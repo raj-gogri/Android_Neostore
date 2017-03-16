@@ -1,5 +1,6 @@
 package com.neosoft.neostore.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
@@ -53,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate( savedInstanceState );
 		//setContentView( R.layout.activity_main );
 
-
-
 		binding = DataBindingUtil.setContentView( this, R.layout.activity_main );
 
 		binding.setRegister( new Register() );
@@ -81,24 +80,30 @@ public class MainActivity extends AppCompatActivity {
 
 				radio1 = radioButton.getText().toString();
 
+
 				if(binding.getRegister().isValid()){
+
+					if(binding.checkBoxConditions.isChecked()){
 
 
 					userPost();
 
 					clearText();
 
+					}else {
 
-
+						Toast.makeText(getApplicationContext(),"Please check the terms and conditions",Toast.LENGTH_LONG).show();
+					}
 				}else {
 
-
-					Toast.makeText(getApplicationContext(),"Please fill all the values",Toast.LENGTH_LONG).show();
+					 Toast.makeText(getApplicationContext(),"Please fill all the values",Toast.LENGTH_LONG).show();
 				}
 
 
 			}
 		} );
+
+
 
 
 
@@ -123,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
 		binding.editTextPassword.setText( "" );
 		binding.editTextConfirmPassword.setText( "" );
 		binding.editTextPhone.setText( "" );
+		binding.checkBoxConditions.setChecked( false );
 
 	}
 

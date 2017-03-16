@@ -17,25 +17,18 @@ public class MyHandler {
 
 	public void onNavigateButton( View view,Activity activity){
 
-
 		Intent i = new Intent( view.getContext(), Demo.class );
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		view.getContext().startActivity( i );
 		transitionAnimation(activity);
 
-
-
-
 	}
 
-	public void transitionAnimation( Activity context){
+	public void transitionAnimation( Activity activity1){
 
-		context.overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left);
+		activity1.overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left);
 
 	}
-
-
-
 
 
 }
