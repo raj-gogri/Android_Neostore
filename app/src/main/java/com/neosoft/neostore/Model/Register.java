@@ -28,7 +28,7 @@ public class Register extends BaseObservable{
 
 
 
-     @Bindable
+	@Bindable
 	public String getFirstName() {
 		return firstName;
 	}

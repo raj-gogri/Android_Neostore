@@ -441,8 +441,7 @@
                     android:textSize="18dp"/>
 
                 <RadioGroup
-                    android:id="@+id/radio"
-
+                    android:id="@+id/radioGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -458,6 +457,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:layout_marginTop="23dp"
+                        android:onClick="@{(view)-> myHandler.onRadioButtonClicked(view,register)}"
+
                         android:buttonTint="@color/white"
                         android:checked="true"
                         android:text="@string/radio_male"
@@ -473,6 +474,8 @@
                         android:layout_marginLeft="14dp"
                         android:layout_marginRight="20sp"
                         android:layout_marginTop="23dp"
+                        android:onClick="@{(view)-> myHandler.onRadioButtonClicked(view,register)}"
+
                         android:layout_toEndOf="@+id/radioButtonMale"
                         android:layout_toRightOf="@+id/radioButtonMale"
                         android:buttonTint="@color/white"
@@ -481,6 +484,7 @@
                         android:textColor="#ffffff"
                         android:textSize="18dp"
                         bind:font="@{Constants.GOTHAM_FONTS}"/>
+
                 </RadioGroup>
 
 
@@ -492,7 +496,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentStart="true"
-                    android:layout_below="@+id/radio"
+                    android:layout_below="@+id/radioGroup"
                     android:layout_marginTop="15sp"
                     android:background="@drawable/edittext_shape">
 
@@ -577,21 +581,20 @@
                     style="@style/button_selector"
                     android:layout_width="290dp"
                     android:layout_height="48dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/checkBoxConditions"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="18dp"
                     android:shadowColor="#ffffff"
                     android:shadowDx="0"
                     android:shadowDy="0"
+                    android:onClick="@{(view)-> myHandler.onRegisterBtn(view,register)}"
+
                     android:shadowRadius="5"
                     android:text="Register"
                     android:textColor="#e91c1a"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     bind:font="@{Constants.GOTHAM_FONTS}"
-                />
+                    android:layout_below="@+id/checkBoxConditions"
+                    android:layout_centerHorizontal="true"/>
                 <!--<EditText-->
                 <!--android:layout_width="@dimen/edittext_width"-->
                 <!--android:layout_height="@dimen/edittextt_height"-->
@@ -613,10 +616,10 @@
                 <!--android:layout_centerHorizontal="true"/>-->
 
 
+
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 
 </layout>
 
-    <!--android:onCheckedChanged="@{handler.onSplitTypeChanged}"-->
