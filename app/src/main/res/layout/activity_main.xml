@@ -571,6 +571,7 @@
                     android:layout_marginTop="15dp"
                     android:buttonTint="@color/white"
                     android:paddingLeft="8sp"
+                    android:checked="true"
                     android:text="@string/checkbox"
                     android:textColor="@color/white"
                     android:textSize="14dp"

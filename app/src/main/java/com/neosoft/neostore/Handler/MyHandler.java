@@ -41,6 +41,7 @@ public class MyHandler {
 		view.getContext().startActivity( i );
 		transitionAnimation(activity);
 
+
 	}
 
 	public void transitionAnimation( Activity activity1){
@@ -68,14 +69,12 @@ public class MyHandler {
 
 	}
 
-
-	public  void onRegisterBtn( final View view, Register registerNew){
+	public  void onRegisterBtn( final View view, final Register registerNew){
 
 
 		first = registerNew.getFirstName();
 		last = registerNew.getLastName();
 		emailId = registerNew.getEmail();
-
 		pass = registerNew.getPassword();
 		radio1 = registerNew.getGender();
 		confirmPass = registerNew.getConfirmPassword();
@@ -83,9 +82,12 @@ public class MyHandler {
 
 
 
+
 		if(registerNew.isValid()){
 
-			//if( ){
+
+//			if(checkbox.isChecked()){
+
 
 				if(registerNew.getEmail().matches( view.getContext().getResources().getString( R.string.email_pattern ) )){
 
@@ -109,12 +111,16 @@ public class MyHandler {
 
 
 
-							}else {
 
+
+
+							}else {
 
 								Toast.makeText( view.getContext(),"Email Id already exist / Data is missing",Toast.LENGTH_SHORT ).show();
 
 							}
+
+
 
 						}
 
@@ -126,7 +132,13 @@ public class MyHandler {
 						}
 
 
+
+
+
 					} );
+
+
+
 
 
 
@@ -138,6 +150,10 @@ public class MyHandler {
 				}
 
 
+
+
+
+//
 //			}else {
 //
 //				Toast.makeText(view.getContext(),"Please check the terms and conditions",Toast.LENGTH_LONG).show();
@@ -145,7 +161,12 @@ public class MyHandler {
 		}else {
 
 			Toast.makeText(view.getContext(),"Please fill all the values",Toast.LENGTH_LONG).show();
+
 		}
+
+
+
+
 
 
 
