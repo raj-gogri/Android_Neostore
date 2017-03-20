@@ -50,7 +50,6 @@ public class MyHandler {
 
 	}
 
-
 	public void onRadioButtonClicked(View view, Register registerNew){
 
 
@@ -81,13 +80,9 @@ public class MyHandler {
 		num = registerNew.getPhoneNumber();
 
 
-
-
 		if(registerNew.isValid()){
 
-
-//			if(checkbox.isChecked()){
-
+			//if(){
 
 				if(registerNew.getEmail().matches( view.getContext().getResources().getString( R.string.email_pattern ) )){
 
@@ -110,17 +105,11 @@ public class MyHandler {
 								Toast.makeText(view.getContext() ,registerNew.getMessage(),Toast.LENGTH_SHORT ).show();
 
 
-
-
-
-
 							}else {
 
 								Toast.makeText( view.getContext(),"Email Id already exist / Data is missing",Toast.LENGTH_SHORT ).show();
 
 							}
-
-
 
 						}
 
@@ -131,16 +120,7 @@ public class MyHandler {
 
 						}
 
-
-
-
-
 					} );
-
-
-
-
-
 
 				}else {
 
@@ -149,11 +129,6 @@ public class MyHandler {
 
 				}
 
-
-
-
-
-//
 //			}else {
 //
 //				Toast.makeText(view.getContext(),"Please check the terms and conditions",Toast.LENGTH_LONG).show();
@@ -167,100 +142,9 @@ public class MyHandler {
 
 
 
-
-
-
-
-
-//
-//		binding.editTextFirstName.setText( "" );
-//		binding.editTextLastName.setText( "" );
-//		binding.editTextEmail.setText( "" );
-//		binding.editTextPassword.setText( "" );
-//		binding.editTextConfirmPassword.setText( "" );
-//		binding.editTextPhone.setText( "" );
-//		binding.checkBoxConditions.setChecked( false );
-
 	}
 
 
 
-		//TODO code for RX Android
 
-//		ServiceInterface serviceInterface = ApiClient.getObservableClient( POST_REGISTER_URL ).create( ServiceInterface.class );
-//
-//
-//		Observable< Register > observable = serviceInterface.postUserDetails( first, last, emailId, pass, confirmPass,radio1 ,num );
-//
-//		observable.subscribeOn( Schedulers.newThread() )
-//
-//				.observeOn( AndroidSchedulers.mainThread() )
-//
-//
-//				.subscribe( new Subscriber< Register >() {
-//					@Override
-//					public void onCompleted() {
-//
-//
-//					}
-//
-//					@Override
-//					public void onError( Throwable e ) {
-//
-//						Log.e( "Failure", e.getMessage() );
-//
-//
-//					}
-//
-//					@Override
-//					public void onNext( Register register ) {
-//
-//						Log.d( "SUCCESS", register.toString());
-//
-//
-//
-//					}
-//
-//				} );
-
-
-		// TODO code for retrofit
-
-//
-//		ServiceInterface userService = ApiClient.getClient(REGISTER_URL ).create( ServiceInterface.class );
-//
-//
-//		Call<Register> call =  userService.postUserDetails( first, last, emailId, pass, confirmPass, radio1 , num  );
-//
-//		call.enqueue( new Callback< Register >() {
-//			@Override
-//			public void onResponse( Call< Register > call, Response< Register > response ) {
-//
-//				if(response.isSuccessful()) {
-//
-//					Register registerNew = response.body();
-//
-//					Log.d( "success", response.message() );
-//
-//					Toast.makeText(view.getContext() ,registerNew.getMessage(),Toast.LENGTH_SHORT ).show();
-//
-//					clearText(v1);
-//
-//				}else {
-//
-//
-//					Toast.makeText( view.getContext(),"Email Id already exist / Data is missing",Toast.LENGTH_SHORT ).show();
-//
-//				}
-//
-//			}
-//
-//			@Override
-//			public void onFailure( Call< Register > call, Throwable t ) {
-//
-//				Log.e("Failed",t.toString() );
-//
-//			}
-//		} );
-//	}
 }
