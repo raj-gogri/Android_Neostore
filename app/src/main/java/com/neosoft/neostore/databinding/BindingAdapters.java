@@ -22,11 +22,11 @@ public class BindingAdapters {
 
     }
 
-
+/*
     @BindingAdapter({"bind:font"})
     public static void setFont(EditText textView , String fontName){
         Typeface typeface = Typeface.createFromAsset(textView.getContext().getAssets(), fontName);
         textView.setTypeface(typeface);
-    }
+    }*/
 
 }

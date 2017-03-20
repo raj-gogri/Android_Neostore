@@ -24,9 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by webwerks1 on 10/3/17.
+ * Created by mayuri on 10/3/17.
  */
 
+/*listener to all view*/
 public class Handler {
 
 
@@ -37,8 +38,11 @@ public class Handler {
     private String userPassword = "";
     private String forgotPassUserId = "";
 
+
+    /*lgin button click fom main layout*/
     public void onLoginClick(final View view, LoginUser user) {
 
+        /*hide keyboard*/
         InputMethodManager inputManager = (InputMethodManager)
                 view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -47,11 +51,15 @@ public class Handler {
         userId = user.getUserName();
         userPassword = user.getPassword();
 
+
+
         if (!user.isValid()) {
             Toast.makeText(view.getContext(), "Enter valid Email id", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(userPassword)) {
             Toast.makeText(view.getContext(), "Enter password", Toast.LENGTH_SHORT).show();
         } else {
+
+            /*retrofit http post request for login*/
             UserService apiService =
                     ApiClient.getClient(SERVER_URL).create(UserService.class);
             Call<LoginUser> call = apiService.postLogin(userId, userPassword);
@@ -78,6 +86,7 @@ public class Handler {
     }
 
 
+    // forgot pass link click from lagin page
     public void onForgotPassClick(View view)
 
     {
@@ -88,8 +97,10 @@ public class Handler {
 
     }
 
+    /*forgot password submit button click*/
     public void onSubmitClick(final View view, ForgotPasswordPOJO forgotPasswordPOJO) {
 
+        /*keyboard hide*/
         InputMethodManager inputManager = (InputMethodManager)
                 view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -99,14 +110,13 @@ public class Handler {
         forgotPassUserId = forgotPasswordPOJO.getUserId();
         if (forgotPasswordPOJO.isValid()) {
 
+             /*retrofit http post request for forgot submit button */
             UserService apiService =
                     ApiClient.getClient(SERVER_URL).create(UserService.class);
             Call<LoginUser> call = apiService.postForgotPass(forgotPassUserId);
             call.enqueue(new Callback<LoginUser>() {
                 @Override
                 public void onResponse(Call<LoginUser> call, Response<LoginUser> response) {
-                    LoginUser loginResponse = response.body();
-
 
                     if (response.isSuccessful()) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
