@@ -1,21 +1,17 @@
 package com.neosoft.neostore.Handler;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.neosoft.neostore.API.ApiClient;
-import com.neosoft.neostore.Activities.Demo;
-import com.neosoft.neostore.Activities.MainActivity;
+import com.neosoft.neostore.activities.Demo;
 import com.neosoft.neostore.Interface.ServiceInterface;
-import com.neosoft.neostore.Model.Register;
+import com.neosoft.neostore.model.Register;
 import com.neosoft.neostore.R;
 
 import retrofit2.Call;
@@ -68,7 +64,7 @@ public class MyHandler {
 
 	}
 
-	public  void onRegisterBtn( final View view, final Register registerNew){
+	public  void onRegisterBtn( final View view, final Register registerNew ,final Activity activity1){
 
 
 		first = registerNew.getFirstName();
@@ -103,6 +99,13 @@ public class MyHandler {
 								Log.d( "success", response.message() );
 
 								Toast.makeText(view.getContext() ,registerNew.getMessage(),Toast.LENGTH_SHORT ).show();
+
+								Intent intent = new Intent( view.getContext(), Demo.class );
+
+								view.getContext().startActivity( intent );
+
+								transitionAnimation(activity1);
+
 
 
 							}else {

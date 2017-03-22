@@ -1,6 +1,6 @@
 package com.neosoft.neostore.Interface;
 
-import com.neosoft.neostore.Model.Register;
+import com.neosoft.neostore.model.Register;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

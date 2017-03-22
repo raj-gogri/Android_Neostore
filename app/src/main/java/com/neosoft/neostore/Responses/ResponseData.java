@@ -1,7 +1,5 @@
 package com.neosoft.neostore.Responses;
 
-import com.neosoft.neostore.Model.Register;
-
 /**
  * Created by Nidhi on 14/3/17.
  */

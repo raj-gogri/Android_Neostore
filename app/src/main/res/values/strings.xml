@@ -19,6 +19,15 @@
     <string name="title_activity_demo">Demo</string>
     <integer name="slide_animation_duration">300</integer>
     <string name="email_pattern">[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+</string>
-
-
+    <string name="neoLabel">NeoSTORE</string>
+    <string name="username_hint">Email Id</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_Login">LOGIN</string>
+    <string name="btn_submit_forgotpass">SUBMIT</string>
+    <string name="txt_forgotpass">Forgot Password?</string>
+    <string name="txt_regiter">Don\'t have an account?</string>
+    <string name="add_user">&#xf0fe;</string>
+    <string name="user">&#xf007;</string>
+    <string name="passString">&#xf023;</string>
+    <string name="passwordNew">&#xf023;</string>
 </resources>
