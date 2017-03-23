@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.neosoft.neostore.API.ApiClient;
 import com.neosoft.neostore.activities.Demo;
 import com.neosoft.neostore.Interface.ServiceInterface;
+import com.neosoft.neostore.activities.MainActivityLogin;
 import com.neosoft.neostore.model.Register;
 import com.neosoft.neostore.R;
 
@@ -32,7 +33,7 @@ public class MyHandler {
 
 	public void onNavigateButton( View view,Activity activity){
 
-		Intent i = new Intent( view.getContext(), Demo.class );
+		Intent i = new Intent( view.getContext(), MainActivityLogin.class );
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		view.getContext().startActivity( i );
 		transitionAnimation(activity);
@@ -40,11 +41,6 @@ public class MyHandler {
 
 	}
 
-	public void transitionAnimation( Activity activity1){
-
-		activity1.overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left);
-
-	}
 
 	public void onRadioButtonClicked(View view, Register registerNew){
 
@@ -100,7 +96,7 @@ public class MyHandler {
 
 								Toast.makeText(view.getContext() ,registerNew.getMessage(),Toast.LENGTH_SHORT ).show();
 
-								Intent intent = new Intent( view.getContext(), Demo.class );
+								Intent intent = new Intent( view.getContext(), MainActivityLogin.class );
 
 								view.getContext().startActivity( intent );
 
@@ -147,6 +143,13 @@ public class MyHandler {
 
 	}
 
+
+
+	public void transitionAnimation( Activity activity1){
+
+		activity1.overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left);
+
+	}
 
 
 

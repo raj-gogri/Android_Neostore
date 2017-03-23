@@ -10,7 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/register_title"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivityLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -22,6 +22,10 @@
             android:label="@string/title_activity_demo"
             android:theme="@style/AppTheme">
         </activity>
+
+        <activity android:name=".activities.ForgotPassword"/>
+
+        <activity android:name=".activities.MainActivity"/>
 
 </application>
 </manifest>

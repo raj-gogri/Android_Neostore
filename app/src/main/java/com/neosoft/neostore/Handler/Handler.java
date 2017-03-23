@@ -1,5 +1,6 @@
-package com.neosoft.neostore.handler;
+package com.neosoft.neostore.Handler;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,7 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.neosoft.neostore.API.ApiClient;
+import com.neosoft.neostore.R;
+import com.neosoft.neostore.activities.Demo;
 import com.neosoft.neostore.activities.ForgotPassword;
+import com.neosoft.neostore.activities.MainActivity;
 import com.neosoft.neostore.activities.MainActivityLogin;
 import com.neosoft.neostore.Interface.UserService;
 import com.neosoft.neostore.model.ForgotPasswordPOJO;
@@ -61,6 +65,11 @@ public class Handler {
 
                     if (response.isSuccessful()) {
                         Toast.makeText(view.getContext(), "User login is successful", Toast.LENGTH_SHORT).show();
+
+	                    Intent intent = new Intent( view.getContext(), Demo.class );
+
+	                    view.getContext().startActivity( intent );
+
                     } else {
                         Toast.makeText(view.getContext(), "User login is unsuccessful", Toast.LENGTH_SHORT).show();
                     }
@@ -75,6 +84,12 @@ public class Handler {
         }
     }
 
+//	public void transitionAnimation( Activity activity1){
+//
+//		activity1.overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left);
+//
+//	}
+
 
     public void onForgotPassClick(View view)
 
@@ -85,6 +100,18 @@ public class Handler {
         //sendToClass(ForgotPassword.class);\
 
     }
+
+	public void onRegisterClick( View view1, Activity activity){
+
+		Intent i = new Intent( view1.getContext(), MainActivity.class );
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		view1.getContext().startActivity( i );
+
+
+
+	}
+
+
 
     public void onSubmitClick(final View view, ForgotPasswordPOJO forgotPasswordPOJO) {
 

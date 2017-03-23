@@ -8,9 +8,11 @@
 
         <variable
             name="myHandler"
-            type="com.neosoft.neostore.handler.Handler" />
+            type="com.neosoft.neostore.Handler.Handler" />
 
-        <import type="com.neosoft.neostore.handler.Constants" />
+        <variable name="activity" type="android.app.Activity"/>
+
+        <import type="com.neosoft.neostore.Constants" />
 
         <variable
             name="myUser"
@@ -36,12 +38,11 @@
             android:layout_marginBottom="49dp"
             android:layout_marginTop="80dp"
             android:gravity="center"
-
             android:text="@string/neoLabel"
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
-            bind:font="@{Constants.GOTHAM_FONT}"
+
 
         />
 
@@ -64,7 +65,7 @@
                 android:text="@string/user"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                bind:font="@{Constants.AWSOME_FONT}" />
+                bind:font="@{Constants.AWSOME_FONTS}" />
 
             <EditText
                 android:id="@+id/txtUserName"
@@ -79,7 +80,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="18sp"
-                bind:font="@{Constants.GOTHAM_FONT}" />
+                bind:font="@{Constants.GOTHAM_FONTS}" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -101,7 +102,7 @@
                 android:text="@string/passString"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                bind:font="@{Constants.AWSOME_FONT}" />
+                bind:font="@{Constants.AWSOME_FONTS}" />
 
             <EditText
                 android:id="@+id/txtPassord"
@@ -155,7 +156,8 @@
             android:text="@string/add_user"
             android:textColor="@color/white"
             android:textSize="46sp"
-            bind:font="@{Constants.AWSOME_FONT}" />
+            android:onClick="@{(view)->myHandler.onRegisterClick(view,activity)}"
+            bind:font="@{Constants.AWSOME_FONTS}" />
 
         <TextView
             android:id="@+id/txt_register"

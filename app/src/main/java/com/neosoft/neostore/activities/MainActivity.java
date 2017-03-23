@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 	//	private String first,last,emailId,pass,confirmPass,num,radio1;
-	private ActivityMainBinding binding;
 //	private RadioButton         radioButton,male,female;
 //	private RadioGroup radioGroup;
 //	int selectID;
@@ -29,13 +28,18 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate( savedInstanceState );
 		//setContentView( R.layout.activity_main );
 
-		binding = DataBindingUtil.setContentView( this, R.layout.activity_main );
+		ActivityMainBinding mainBinding = DataBindingUtil.setContentView( this,R.layout.activity_main );
+		mainBinding.setRegister( new Register() );
+		mainBinding.setMyHandler( new MyHandler() );
+		mainBinding.setActivity( this );
 
-		binding.setRegister( new Register() );
-
-		binding.setMyHandler( new MyHandler() );
-
-		binding.setActivity( this );
+//		binding = DataBindingUtil.setContentView( this, R.layout.activity_main );
+//
+//		binding.setRegister( new Register() );
+//
+//		binding.setMyHandler( new MyHandler() );
+//
+//		binding.setActivity( this );
 
 //		binding.BtnRegister.setOnClickListener( new View.OnClickListener() {
 //			@Override

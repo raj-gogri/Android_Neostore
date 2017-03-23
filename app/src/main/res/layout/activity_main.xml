@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:bind="http://schemas.android.com/apk/res-auto">
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+>
 
     <data>
 
@@ -634,7 +635,7 @@
 
         <!--<variable-->
             <!--name="myHandler"-->
-            <!--type="com.neosoft.neostore.handler.Handler" />-->
+            <!--type="com.neosoft.neostore.Handler.Handler" />-->
 
         <!--<import type="com.neosoft.neostore.handler.Constants" />-->
 

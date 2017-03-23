@@ -38,20 +38,20 @@ public class Demo extends AppCompatActivity {
 
 	}
 
-//	@Override
-//	public void onBackPressed() {
-//		super.onBackPressed();
-//
-//
-//		Intent i = new Intent( getApplicationContext(),MainActivity.class);
-//		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//		startActivity( i );
-//		transitionAnimation();
-//	}
-//
-//	private void transitionAnimation() {
-//
-//		overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left );
-//	}
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+
+
+		Intent i = new Intent( getApplicationContext(),MainActivityLogin.class);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity( i );
+		transitionAnimation();
+	}
+
+	private void transitionAnimation() {
+
+		overridePendingTransition( R.anim.slide_in_right,R.anim.slide_out_left );
+	}
 }
 
