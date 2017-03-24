@@ -1,5 +1,24 @@
 <resources>
-    <string name="app_name">Neostore</string>
+    <string name="app_name">NeoStore</string>
+    <string name="register_title">Register</string>
+    <string name="username">&#xf007;</string>
+    <string name="emailId"> &#xf0e0;</string>
+    <string name="password1">&#xf023;</string>
+    <string name="phone">&#xf10b;</string>
+    <string name="first_name">First Name</string>
+    <string name="last_nmae">Last Name</string>
+    <string name="Email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="checkbox">I agree the Terms and Conditions</string>
+    <string name="REGISTER_POST"> http://staging.php-dev.in:8844/trainingapp/</string>
+    <string name="title_activity_demo">Demo</string>
+    <integer name="slide_animation_duration">300</integer>
+    <string name="email_pattern">[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+</string>
     <string name="neoLabel">NeoSTORE</string>
     <string name="username_hint">Email Id</string>
     <string name="password_hint">Password</string>
@@ -9,5 +28,6 @@
     <string name="txt_regiter">Don\'t have an account?</string>
     <string name="add_user">&#xf0fe;</string>
     <string name="user">&#xf007;</string>
-    <string name="password">&#xf023;</string>
+    <string name="passString">&#xf023;</string>
+    <string name="passwordNew">&#xf023;</string>
 </resources>

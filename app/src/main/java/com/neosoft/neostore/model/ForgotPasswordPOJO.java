@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.neosoft.neostore.BR;
 
+
 /**
  * Created by webwerks1 on 15/3/17.
  */
@@ -22,7 +23,7 @@ public class ForgotPasswordPOJO extends BaseObservable{
 
     public void setUserId(String userId) {
         this.userId = userId;
-        notifyPropertyChanged(BR.userId);
+        notifyPropertyChanged( BR.userId);
     }
 
     public boolean isValid()

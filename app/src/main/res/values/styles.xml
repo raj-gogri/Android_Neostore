@@ -4,6 +4,26 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Login_Registration">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">#ffffff</item>
+        <item name="android:layout_marginTop">23dp</item>
+    </style>
+
+    <style name="button_selector">
+
+        <item name="android:background">@drawable/button_shape</item>
+
+
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+
         <item name="colorPrimaryDark">@color/background_red</item>
         <item name="colorAccent">@color/black</item>
     </style>

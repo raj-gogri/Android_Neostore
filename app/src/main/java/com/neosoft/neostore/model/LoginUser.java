@@ -1,22 +1,11 @@
 package com.neosoft.neostore.model;
 
-import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.databinding.tool.util.L;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import com.neosoft.neostore.BR;
-import com.neosoft.neostore.api.ApiClient;
-import com.neosoft.neostore.api.UserService;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by webwerks1 on 8/3/17.
@@ -47,7 +36,7 @@ public class LoginUser extends BaseObservable {
 
     public void setUserName(String userName) {
         this.userName = userName;
-        notifyPropertyChanged(BR.userName);
+        notifyPropertyChanged( BR.userName);
     }
 
     @Bindable

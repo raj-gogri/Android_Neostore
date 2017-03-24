@@ -1,4 +1,4 @@
-package com.neosoft.neostore.api;
+package com.neosoft.neostore.Interface;
 
 import com.neosoft.neostore.model.LoginUser;
 

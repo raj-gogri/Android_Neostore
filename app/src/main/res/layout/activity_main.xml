@@ -1,175 +1,802 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+>
 
     <data>
 
-        <import type="android.view.View" />
 
-        <variable
-            name="myHandler"
-            type="com.neosoft.neostore.handler.Handler" />
+        <import type="android.view.View"/>
 
-        <import type="com.neosoft.neostore.handler.Constants" />
+        <import type="android.app.Activity"/>
 
-        <variable
-            name="myUser"
-            type="com.neosoft.neostore.model.LoginUser" />
+        <variable name="activity" type="android.app.Activity"/>
+
+
+        <variable name="myHandler"
+                  type="com.neosoft.neostore.Handler.MyHandler"/>
+
+        <import type="com.neosoft.neostore.Constants"/>
+
+        <variable name="mainactivity"
+                  type="com.neosoft.neostore.activities.MainActivity"/>
+
+
+        <variable name="register"
+                  type="com.neosoft.neostore.model.Register"/>
 
     </data>
 
-
-    <RelativeLayout
+    <ScrollView
         android:id="@+id/activity_main"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_red"
-        android:paddingBottom="20dp"
-        android:paddingLeft="13dp"
-        android:paddingRight="13dp">
+        android:background="@color/colorPrimary"
+        tools:context="com.neosoft.neostore.activities.MainActivity">
 
-        <TextView
-            android:id="@+id/txtLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="49dp"
-            android:layout_marginTop="80dp"
-            android:gravity="center"
-            android:text="@string/neoLabel"
-            android:textColor="@color/white"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            bind:font="@{Constants.GOTHAM_FONT}"
 
-            />
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/username_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLabel"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/editext_border">
+            <!--<include-->
+            <!--android:id="@+id/toolbar"-->
+            <!--layout="@layout/toolbar_layout" />-->
 
-            <TextView
-                android:id="@+id/user_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:padding="10dp"
-                android:text="@string/user"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                bind:font="@{Constants.AWSOME_FONT}" />
 
-            <EditText
-                android:id="@+id/txtUserName"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/user_icon"
-                android:background="@android:color/transparent"
-                android:hint="@string/username_hint"
-                android:text="@={myUser.userName}"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="18sp"
-                bind:font="@{Constants.GOTHAM_FONT}" />
-        </RelativeLayout>
+                android:layout_height="50dip"
+                android:background="@color/tool_color">
 
-        <RelativeLayout
-            android:id="@+id/password_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/username_layout"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:background="@drawable/editext_border">
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
 
-            <TextView
-                android:id="@+id/password_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:padding="10dp"
-                android:text="@string/password"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                bind:font="@{Constants.AWSOME_FONT}" />
+                    android:layout_marginLeft="-10dp"
+                    android:onClick="@{(view)->myHandler.onNavigateButton(view,activity)}"
+                    android:src="@mipmap/ic_back"/>
 
-            <EditText
-                android:id="@+id/txtPassord"
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/register_title"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    bind:font="@{Constants.GOTHAM_FONTS}"/>
+
+            </android.support.v7.widget.Toolbar>
+
+
+            <RelativeLayout
+                android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/password_icon"
-                android:background="@android:color/transparent"
-                android:hint="@string/password_hint"
-                android:inputType="textPassword"
-                android:text="@={myUser.password}"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="18sp" />
+                android:layout_height="650sp"
+                android:layout_below="@+id/toolbar"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp">
 
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:text="NeoSTORE"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    android:textStyle="bold"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/firstname_layout"
+                    android:layout_width="@dimen/edittext_width"
+                    android:layout_height="@dimen/edittextt_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginTop="31sp"
+                    android:background="@drawable/edittext_shape">
+
+
+                    <TextView
+                        android:id="@+id/firstName_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:paddingRight="10sp"
+                        android:text="@string/username"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.AWSOME_FONTS}"
+                    />
+
+
+                    <EditText
+                        android:id="@+id/editTextFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/firstName_icon"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="@string/first_name"
+                        android:inputType="textPersonName"
+                        android:text="@={register.firstName}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"
+                    />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/lastname_layout"
+                    android:layout_width="@dimen/edittext_width"
+                    android:layout_height="@dimen/edittextt_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/firstname_layout"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/edittext_shape">
+
+
+                    <TextView
+                        android:id="@+id/lastname_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:paddingRight="10sp"
+                        android:text="@string/username"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.AWSOME_FONTS}"
+                    />
+
+
+                    <EditText
+                        android:id="@+id/editTextLastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/lastname_icon"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="@string/last_nmae"
+                        android:inputType="textPersonName"
+                        android:text="@={register.lastName}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"
+                    />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/email_layout"
+                    android:layout_width="@dimen/edittext_width"
+                    android:layout_height="@dimen/edittextt_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/lastname_layout"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/edittext_shape">
+
+
+                    <TextView
+                        android:id="@+id/email_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:paddingRight="10sp"
+                        android:text="@string/emailId"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.AWSOME_FONTS}"
+                    />
+
+
+                    <EditText
+                        android:id="@+id/editTextEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/email_icon"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="@string/Email"
+                        android:inputType="textEmailAddress"
+                        android:text="@={register.email}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"
+                    />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/password_layout"
+                    android:layout_width="@dimen/edittext_width"
+                    android:layout_height="@dimen/edittextt_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/email_layout"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/edittext_shape">
+
+
+                    <TextView
+                        android:id="@+id/password_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:paddingRight="10sp"
+                        android:text="@string/password1"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.AWSOME_FONTS}"
+                    />
+
+
+                    <EditText
+                        android:id="@+id/editTextPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/password_icon"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:text="@={register.password}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"
+                    />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/confirm_layout"
+                    android:layout_width="@dimen/edittext_width"
+                    android:layout_height="@dimen/edittextt_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/password_layout"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/edittext_shape">
+
+
+                    <TextView
+                        android:id="@+id/confirm_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:paddingRight="10sp"
+                        android:text="@string/password1"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.AWSOME_FONTS}"
+                    />
+
+
+                    <EditText
+                        android:id="@+id/editTextConfirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/confirm_icon"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword"
+                        android:text="@={register.confirmPassword}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"
+                    />
+
+
+                </RelativeLayout>
+
+
+                <!--<EditText-->
+                <!--android:layout_width="@dimen/edittext_width"-->
+                <!--android:layout_height="@dimen/edittextt_height"-->
+                <!--android:text="@{register.firstName}"-->
+                <!--android:inputType="textPersonName"-->
+                <!--android:hint="@string/first_name"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18dp"-->
+
+                <!--android:drawableLeft="@drawable/username"-->
+                <!--android:paddingLeft="15sp"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:drawablePadding="10sp"-->
+                <!--android:background="@drawable/edittext_shape"-->
+                <!--android:ems="10"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginTop="300dp"-->
+                <!--android:id="@+id/editTextFirstName"-->
+                <!--android:layout_below="@+id/textView"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"/>-->
+                <!--<EditText-->
+                <!--android:layout_width="@dimen/edittext_width"-->
+                <!--android:layout_height="@dimen/edittextt_height"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:text="@{register.email}"-->
+                <!--android:hint="@string/Email"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:drawableLeft="@drawable/ic_email"-->
+                <!--android:drawablePadding="10sp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:paddingLeft="8sp"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:background="@drawable/edittext_shape"-->
+                <!--android:ems="10"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginTop="300dp"-->
+                <!--android:layout_below="@+id/editTextLastName"-->
+                <!--android:id="@+id/editTextEmail"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentEnd="true"/>-->
+                <!--<EditText-->
+                <!--android:layout_width="@dimen/edittext_width"-->
+                <!--android:layout_height="@dimen/edittextt_height"-->
+                <!--android:text="@{register.password}"-->
+                <!--android:drawableLeft="@drawable/password"-->
+                <!--android:drawablePadding="10sp"-->
+                <!--android:inputType="textPassword"-->
+                <!--android:hint="@string/password"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18dp"-->
+                <!--android:paddingLeft="15sp"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:background="@drawable/edittext_shape"-->
+                <!--android:ems="10"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginTop="300dp"-->
+                <!--android:layout_below="@+id/editTextEmail"-->
+                <!--android:id="@+id/editTextPassword"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentEnd="true"/>-->
+                <!--<EditText-->
+                <!--android:layout_width="@dimen/edittext_width"-->
+                <!--android:layout_height="@dimen/edittextt_height"-->
+                <!--android:text="@{register.confirmPassword}"-->
+                <!--android:inputType="textPassword"-->
+                <!--android:hint="@string/confirm_password"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18dp"-->
+                <!--android:paddingLeft="15sp"-->
+                <!--android:drawableLeft="@drawable/password"-->
+                <!--android:drawablePadding="10sp"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:background="@drawable/edittext_shape"-->
+                <!--android:ems="10"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginTop="400dp"-->
+                <!--android:layout_below="@+id/editTextPassword"-->
+                <!--android:id="@+id/editTextConfirmPassword"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentEnd="true"/>-->
+
+
+                <TextView
+                    android:id="@+id/textViewGender"
+                    style="@style/Login_Registration"
+                    android:layout_below="@+id/confirm_layout"
+                    android:layout_marginBottom="9dp"
+                    android:text="Gender"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/confirm_layout"
+                    android:orientation="horizontal">
+                    <!--android:checkedButton="@+id/radioButtonMale"-->
+                    <RadioButton
+                        android:id="@+id/radioButtonMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="23dp"
+                        android:onClick="@{(view)-> myHandler.onRadioButtonClicked(view,register)}"
+
+                        android:buttonTint="@color/white"
+                        android:checked="true"
+                        android:text="@string/radio_male"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"/>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="20sp"
+                        android:layout_marginTop="23dp"
+                        android:onClick="@{(view)-> myHandler.onRadioButtonClicked(view,register)}"
+
+                        android:layout_toEndOf="@+id/radioButtonMale"
+                        android:layout_toRightOf="@+id/radioButtonMale"
+                        android:buttonTint="@color/white"
+                        android:text="@string/radio_female"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"/>
+
+                </RadioGroup>
+
+
+                <RelativeLayout
+                    android:id="@+id/phoneNumber_layout"
+                    android:layout_width="@dimen/edittext_width"
+                    android:layout_height="@dimen/edittextt_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/radioGroup"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/edittext_shape">
+
+
+                    <TextView
+                        android:id="@+id/phoneNumber_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:paddingRight="10sp"
+                        android:text="@string/phone"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.AWSOME_FONTS}"
+                    />
+
+
+                    <EditText
+                        android:id="@+id/editTextPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/phoneNumber_icon"
+                        android:background="@android:color/transparent"
+                        android:ems="10"
+                        android:hint="@string/phone_number"
+                        android:inputType="phone"
+                        android:text="@={register.phoneNumber}"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        android:textSize="18sp"
+                        bind:font="@{Constants.GOTHAM_FONTS}"
+                    />
+
+
+                </RelativeLayout>
+
+
+                <!--<EditText-->
+                <!--android:layout_width="@dimen/edittext_width"-->
+                <!--android:layout_height="@dimen/edittextt_height"-->
+                <!--android:inputType="phone"-->
+                <!--android:text="@{register.phoneNumber}"-->
+                <!--android:hint="@string/phone_number"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18dp"-->
+                <!--android:paddingLeft="4sp"-->
+                <!--android:drawablePadding="10sp"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:drawableLeft="@drawable/ic_action_name"-->
+
+                <!--android:background="@drawable/edittext_shape"-->
+                <!--android:ems="10"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginTop="45dp"-->
+                <!--android:id="@+id/editTextPhone"-->
+                <!--android:layout_alignTop="@+id/textViewGender"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"/>-->
+
+                <CheckBox
+                    android:id="@+id/checkBoxConditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/phoneNumber_layout"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="15dp"
+                    android:buttonTint="@color/white"
+                    android:paddingLeft="8sp"
+                    android:checked="true"
+                    android:text="@string/checkbox"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    bind:font="@{Constants.GOTHAM_FONTS}"/>
+
+                <Button
+                    android:id="@+id/BtnRegister"
+                    style="@style/button_selector"
+                    android:layout_width="290dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="18dp"
+                    android:shadowColor="#ffffff"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:onClick="@{(view)-> myHandler.onRegisterBtn(view,register,activity)}"
+
+                    android:shadowRadius="5"
+                    android:text="Register"
+                    android:textColor="#e91c1a"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    bind:font="@{Constants.GOTHAM_FONTS}"
+                    android:layout_below="@+id/checkBoxConditions"
+                    android:layout_centerHorizontal="true"/>
+                <!--<EditText-->
+                <!--android:layout_width="@dimen/edittext_width"-->
+                <!--android:layout_height="@dimen/edittextt_height"-->
+                <!--android:text="@{register.lastName}"-->
+                <!--android:inputType="textPersonName"-->
+                <!--android:drawablePadding="10sp"-->
+                <!--android:drawableLeft="@drawable/username"-->
+                <!--android:hint="@string/last_nmae"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18dp"-->
+                <!--android:paddingLeft="15sp"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:background="@drawable/edittext_shape"-->
+                <!--android:ems="10"-->
+                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                <!--android:layout_marginTop="300dp"-->
+                <!--android:id="@+id/editTextLastName"-->
+                <!--android:layout_below="@+id/editTextFirstName" -->
+                <!--android:layout_centerHorizontal="true"/>-->
+
+
+
+            </RelativeLayout>
         </RelativeLayout>
+    </ScrollView>
 
-        <Button
-            android:id="@+id/btnLogin"
-            style="@style/Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/password_layout"
-            android:layout_marginBottom="21dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:onClick="@{(view)->myHandler.onLoginClick(view,myUser)}"
-            android:text="@string/btn_Login"
-            android:textColor="@color/background_red"
-            android:textSize="26sp" />
-
-        <TextView
-            android:id="@+id/txtForgotPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnLogin"
-            android:gravity="center"
-            android:text="@string/txt_forgotpass"
-            android:textColor="@color/white"
-            android:onClick="@{(view)->myHandler.onForgotPassClick(view)}"
-            android:textSize="18sp" />
-
-
-        <TextView
-            android:id="@+id/btn_addUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="@string/add_user"
-            android:textColor="@color/white"
-            android:textSize="46sp"
-            bind:font="@{Constants.AWSOME_FONT}" />
-
-        <TextView
-            android:id="@+id/txt_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/btn_addUser"
-            android:layout_marginTop="13dp"
-            android:text="@string/txt_regiter"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-
-    </RelativeLayout>
 </layout>
+
+
+<!--<layout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:bind="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools">-->
+
+    <!--<data>-->
+
+        <!--<import type="android.view.View" />-->
+
+        <!--<variable-->
+            <!--name="myHandler"-->
+            <!--type="com.neosoft.neostore.Handler.Handler" />-->
+
+        <!--<import type="com.neosoft.neostore.handler.Constants" />-->
+
+        <!--<variable-->
+            <!--name="myUser"-->
+            <!--type="com.neosoft.neostore.model.LoginUser" />-->
+
+    <!--</data>-->
+
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/activity_main"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/background_red"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:paddingLeft="13dp"-->
+        <!--android:paddingRight="13dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/txtLabel"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginBottom="49dp"-->
+            <!--android:layout_marginTop="80dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/neoLabel"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="35sp"-->
+            <!--android:textStyle="bold"-->
+            <!--bind:font="@{Constants.GOTHAM_FONT}"-->
+
+            <!--/>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/username_layout"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/txtLabel"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:background="@drawable/editext_border">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/user_icon"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="@string/user"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18sp"-->
+                <!--bind:font="@{Constants.AWSOME_FONT}" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/txtUserName"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toRightOf="@id/user_icon"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:hint="@string/username_hint"-->
+                <!--android:text="@={myUser.userName}"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textSize="18sp"-->
+                <!--bind:font="@{Constants.GOTHAM_FONT}" />-->
+        <!--</RelativeLayout>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/password_layout"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/username_layout"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:background="@drawable/editext_border">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/password_icon"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="@string/password"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18sp"-->
+                <!--bind:font="@{Constants.AWSOME_FONT}" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/txtPassord"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toRightOf="@+id/password_icon"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:hint="@string/password_hint"-->
+                <!--android:inputType="textPassword"-->
+                <!--android:text="@={myUser.password}"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textColorHint="@color/white"-->
+                <!--android:textSize="18sp" />-->
+
+        <!--</RelativeLayout>-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btnLogin"-->
+            <!--style="@style/Button"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/password_layout"-->
+            <!--android:layout_marginBottom="21dp"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginRight="30dp"-->
+            <!--android:onClick="@{(view)->myHandler.onLoginClick(view,myUser)}"-->
+            <!--android:text="@string/btn_Login"-->
+            <!--android:textColor="@color/background_red"-->
+            <!--android:textSize="26sp" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/txtForgotPass"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/btnLogin"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/txt_forgotpass"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:onClick="@{(view)->myHandler.onForgotPassClick(view)}"-->
+            <!--android:textSize="18sp" />-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/btn_addUser"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="@string/add_user"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="46sp"-->
+            <!--bind:font="@{Constants.AWSOME_FONT}" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/txt_register"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_alignTop="@+id/btn_addUser"-->
+            <!--android:layout_marginTop="13dp"-->
+            <!--android:text="@string/txt_regiter"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="16sp" />-->
+
+
+    <!--</RelativeLayout>-->
+<!--</layout>-->
+<!--&gt;>>>>>> 36ed4d72fb6fbdb9c8ed680f65ef71aa210164dc-->
